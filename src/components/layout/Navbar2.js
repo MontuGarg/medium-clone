@@ -1,8 +1,9 @@
 import React from 'react'
 import image from "../../images/insights.jpg"
-import { Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function  Navbar2() {
     const data=JSON.parse(localStorage.getItem("LoginUser"));
+    let navigate=useNavigate();
   return (
     <div id="navbar">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -41,7 +42,7 @@ export default function  Navbar2() {
                     </li>
                     
                     <li className="nav-item">
-                    <span className="nav-link" onClick={()=>{localStorage.clear();window.reload()}}><img alt="" src='https://cdn-icons-png.flaticon.com/512/126/126467.png' style={{width:"30px",height:"30px"}}></img></span>
+                    <span className="nav-link" onClick={()=>{localStorage.clear();navigate("/");navigate(0); }}><img alt="" src='https://cdn-icons-png.flaticon.com/512/126/126467.png' style={{width:"30px",height:"30px"}}></img></span>
                     </li>
                     <li className="nav-item">
                     <Link className="nav-link" to={`/profile/${data._id}`}><img alt="" src={data.image} style={{width:"35px",height:"35px",borderRadius:"100%",border:".2px solid black"}}></img></Link>
