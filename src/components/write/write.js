@@ -67,7 +67,7 @@ export default function Write2() {
                 }  
                 if(updatedArticle.tag && updatedArticle.content && updatedArticle.title){
                     axios
-                        .post("http://localhost:4000/postArticle", a)
+                        .post("https://mediumbackend-production.up.railway.app/postArticle", a)
                         .then((res) => {
                             alert(res.data.message);
                             navigate("/");

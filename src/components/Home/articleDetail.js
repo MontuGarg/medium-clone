@@ -16,7 +16,7 @@ export default function ArticleDetail() {
     });
 
     const loadArticle = useCallback(() => {
-        axios.get(`http://localhost:4000/getArticle1/${id}`)
+        axios.get(`https://mediumbackend-production.up.railway.app/getArticle1/${id}`)
             .then(res => setArticle(res.data.article))
             .catch(err => console.log(err));
     }, [id]);

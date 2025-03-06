@@ -8,7 +8,7 @@ export default function ForYou() {
   const [article, setArticle] = useState([]);
 
   const loadArticle = useCallback(() => {
-    axios.get("http://localhost:4000/getArticle")
+    axios.get("https://mediumbackend-production.up.railway.app/getArticle")
       .then(res => {
         setArticle(res.data.article);
         setLength(res.data.article.length);

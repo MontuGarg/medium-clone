@@ -20,7 +20,7 @@ export default function UpdateW() {
     useEffect(() => {
         const loadArticle = async () => {
             try {
-                const res = await axios.post(`http://localhost:4000/getArticle/${id}`);
+                const res = await axios.post(`https://mediumbackend-production.up.railway.app/getArticle/${id}`);
                 setArticle(res.data.article);
             } catch (error) {
                 console.error("Error loading article:", error);
@@ -71,7 +71,7 @@ export default function UpdateW() {
                     imageA: updatedArticle.imageA
                 };
                 if (updatedArticle.tag && updatedArticle.content && updatedArticle.title) {
-                    axios.post(`http://localhost:4000/updateArticle/${id}`, a)
+                    axios.post(`https://mediumbackend-production.up.railway.app/updateArticle/${id}`, a)
                         .then((res) => {
                             alert(res.data.message);
                             navigate("/");

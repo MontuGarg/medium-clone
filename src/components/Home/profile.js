@@ -20,7 +20,7 @@ export default function Profile() {
   // Fetch user data
   const loadUser = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/getUser/${id}`);
+      const res = await axios.get(`https://mediumbackend-production.up.railway.app/getUser/${id}`);
       setUser(res.data.user);
       setPro(res.data.user._id === data1._id);
     } catch (error) {
@@ -31,7 +31,7 @@ export default function Profile() {
   // Fetch follow list
   const loadFollow = useCallback(async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/getFollow/${data1.email}`);
+      const res = await axios.get(`https://mediumbackend-production.up.railway.app/getFollow/${data1.email}`);
       setFollowList(res.data.user);
     } catch (error) {
       console.error("Error loading follow list:", error);
@@ -41,7 +41,7 @@ export default function Profile() {
   // Fetch user articles
   const loadArticles = useCallback(async (email) => {
     try {
-      const res = await axios.post(`http://localhost:4000/getArticles/${id}`, { email });
+      const res = await axios.post(`https://mediumbackend-production.up.railway.app/getArticles/${id}`, { email });
       setArticles(res.data.article);
     } catch (error) {
       console.error("Error loading articles:", error);
@@ -64,7 +64,7 @@ export default function Profile() {
   // Delete an article
   const deleteArticle = async (articleId) => {
     try {
-      await axios.post(`http://localhost:4000/deleteArt`, { id: articleId });
+      await axios.post(`https://mediumbackend-production.up.railway.app/deleteArt`, { id: articleId });
       setArticles((prev) => prev.filter((art) => art._id !== articleId)); // Remove article from state
     } catch (error) {
       console.error("Error deleting article:", error);
@@ -74,7 +74,7 @@ export default function Profile() {
   // Follow a user
   const followUser = async (email) => {
     try {
-      await axios.post(`http://localhost:4000/follow`, {
+      await axios.post(`https://mediumbackend-production.up.railway.app/follow`, {
         user1: data1.email,
         user2: email,
         status: 1,
@@ -88,7 +88,7 @@ export default function Profile() {
   // Unfollow a user
   const unfollowUser = async (email) => {
     try {
-      await axios.post(`http://localhost:4000/following`, {
+      await axios.post(`https://mediumbackend-production.up.railway.app/following`, {
         user1: data1.email,
         user2: email,
         status: 0,

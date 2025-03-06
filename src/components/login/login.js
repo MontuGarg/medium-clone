@@ -19,7 +19,7 @@ export default function Login() {
       email:user.email,
       password:user.password
     }
-    axios.post("http://localhost:4000/login",a).then(res=>{
+    axios.post("https://mediumbackend-production.up.railway.app/login",a).then(res=>{
         
         if(res.data.message==="Login Successful"){
             localStorage.setItem("LoginUser",JSON.stringify(res.data.user));

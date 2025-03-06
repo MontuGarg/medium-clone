@@ -13,7 +13,7 @@ export default function Search() {
 
   const loadUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getArts");
+      const res = await axios.get("https://mediumbackend-production.up.railway.app/getArts");
       setData(res.data.user || []);
     } catch (error) {
       console.error("Error loading users:", error);

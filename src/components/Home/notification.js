@@ -17,7 +17,7 @@ export default function Notification() {
 
   const loadUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getUsers");
+      const res = await axios.get("https://mediumbackend-production.up.railway.app/getUsers");
       setUsers(res.data.user || []);
     } catch (error) {
       console.error(error);
@@ -26,7 +26,7 @@ export default function Notification() {
 
   const loadFollows = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getFollow");
+      const res = await axios.get("https://mediumbackend-production.up.railway.app/getFollow");
       setFollows(res.data.user || []);
     } catch (error) {
       console.error(error);
@@ -35,7 +35,7 @@ export default function Notification() {
 
   const loadArticles = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getArticle");
+      const res = await axios.get("https://mediumbackend-production.up.railway.app/getArticle");
       setArticles(res.data.article || []);
     } catch (error) {
       console.error(error);

@@ -20,7 +20,7 @@ export default function HomeB() {
   },[]);
   const loadArticle=()=>{
     try{
-      axios.get("http://localhost:4000/getArticle").then(res=>{
+      axios.get("https://mediumbackend-production.up.railway.app/getArticle").then(res=>{
         setArticle(res.data.article);
         setLength(res.data.article.length);
       })

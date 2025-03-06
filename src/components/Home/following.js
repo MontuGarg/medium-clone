@@ -10,13 +10,13 @@ export default function Following() {
   const [article, setArticle] = useState([]);
 
   const loadFollow = useCallback(() => {
-    axios.get(`http://localhost:4000/getFollow/${data1.email}`)
+    axios.get(`https://mediumbackend-production.up.railway.app/getFollow/${data1.email}`)
       .then(res => setFollow(res.data.user))
       .catch(err => console.log(err));
   }, [data1.email]);
 
   const loadArticle = useCallback(() => {
-    axios.get("http://localhost:4000/getArticle")
+    axios.get("https://mediumbackend-production.up.railway.app/getArticle")
       .then(res => {
         setArticle(res.data.article);
         setLength(res.data.article.length);

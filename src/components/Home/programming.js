@@ -13,7 +13,7 @@ export default function Programming() {
   // Load articles from API
   const loadArticle = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getArticle3");
+      const res = await axios.get("https://mediumbackend-production.up.railway.app/getArticle3");
       setArticles(res.data.article);
     } catch (error) {
       console.error("Error loading articles:", error);

@@ -54,7 +54,7 @@ export default function Register() {
     if(user.name && user.email&&user.password && file){
       uploadImageToCloudinary(file, (updateduser) => {
         axios
-          .post("http://localhost:4000/register", updateduser)
+          .post("https://mediumbackend-production.up.railway.app/register", updateduser)
           .then((res) => {
               alert(res.data.message);
               navigate("/login");

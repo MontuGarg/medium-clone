@@ -11,13 +11,13 @@ export default function FindFriend() {
     const [data, setData] = useState([]);
 
     const loadUsers = useCallback(() => {
-        axios.get(`http://localhost:4000/getUsers`)
+        axios.get(`https://mediumbackend-production.up.railway.app/getUsers`)
             .then(res => setData(res.data.user))
             .catch(error => console.log(error));
     }, []);
 
     const loadFollow = useCallback(() => {
-        axios.get(`http://localhost:4000/getFollow/${data1.email}`)
+        axios.get(`https://mediumbackend-production.up.railway.app/getFollow/${data1.email}`)
             .then(res => setFollow(res.data.user))
             .catch(error => console.log(error));
     }, [data1.email]);
@@ -29,14 +29,14 @@ export default function FindFriend() {
 
     const handleFollow = (e) => {
         const a = { user1: data1.email, user2: e, status: 1 };
-        axios.post(`http://localhost:4000/follow`, a)
+        axios.post(`https://mediumbackend-production.up.railway.app/follow`, a)
             .then(() => window.location.reload())
             .catch(error => console.log(error));
     };
 
     const handleFollowing = (e) => {
         const a = { user1: data1.email, user2: e, status: 0 };
-        axios.post(`http://localhost:4000/following`, a)
+        axios.post(`https://mediumbackend-production.up.railway.app/following`, a)
             .then(() => window.location.reload())
             .catch(error => console.log(error));
     };

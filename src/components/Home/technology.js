@@ -12,7 +12,7 @@ export default function Technology() {
 
   const loadArticles = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getArticle4");
+      const res = await axios.get("https://mediumbackend-production.up.railway.app/getArticle4");
       setArticles(res.data.article || []);
     } catch (error) {
       console.error("Error fetching articles:", error);
