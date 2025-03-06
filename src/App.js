@@ -23,7 +23,7 @@ import FindFriend from './components/Home/FindFriend';
 import Following from './components/Home/following';
 import Notification from './components/Home/notification';
 import Navbar from './components/layout/navbar';
-
+import Footer from "./components/layout/footer";
 
 function App() {
   const [user,setUser]=useState();
@@ -66,12 +66,12 @@ function App() {
           <Route path='/find' element={<FindFriend/>}></Route>
           <Route path='/following' element={<Following/>}></Route>
           <Route path='/notification' element={<Notification/>}></Route>
-
+          
         </Routes>
       </BrowserRouter>
       
       
-      
+      <Footer/>
     </div>
   )};
 }

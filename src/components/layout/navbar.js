@@ -1,10 +1,11 @@
 import React from 'react'
+import image from "../../images/insights.jpg"
 export default function  Navbar() {
   return (
     <div id="navbar">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid ">
-                <a className="navbar-brand me-auto medium" href="/"><h1><img src='https://seeklogo.com/images/M/medium-logo-F0ACFCCD58-seeklogo.com.png' width="60px"></img>Medium</h1></a>
+                <a className="navbar-brand me-auto medium" href="/"><h1><img alt="logo" src={image} width="60px"></img>Insights</h1></a>
                 <div className="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul className="navbar-nav mb-2 mb-lg-0 mediumOption">
                     <li className="nav-item">

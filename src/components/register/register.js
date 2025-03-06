@@ -9,26 +9,66 @@ export default function Register() {
     password:"",
     image:""
   })
-  const {image,name,email,password}=user;
+  const [file, setFile] = useState(null);
+  const {name,email,password}=user;
+  const handleImageChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    // Check if the selected file is of the correct type (jpeg, jpg, png)
+    if (
+      selectedFile &&
+      (selectedFile.type === "image/jpeg" ||
+        selectedFile.type === "image/jpg" ||
+        selectedFile.type === "image/png")
+    ) {
+      setFile(selectedFile);
+    } else {
+      alert("Please select a valid image file (jpeg, jpg, png).");
+      e.target.value = ""; // Clear the input
+    }
+  };
+
+  const uploadImageToCloudinary = async (file, callback) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "EventImage"); // Set your Cloudinary upload preset here
+
+    try {
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/daeduuf4u/image/upload`, // Cloudinary upload URL
+        formData
+      );
+      console.log("Image uploaded successfully:", response.data);
+      const imageUrl = response.data.secure_url;
+
+      // Call the callback function with the updated event data
+      callback({ ...user, image: imageUrl });
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
   const onValChange=e=>{
     setUser({...user,[e.target.name]:e.target.value});
   }
   const handleSubmit=()=>{
-    if(user.name && user.email,user.password){
-    const a={
-      image:user.image,
-      name:user.name,
-      email:user.email,
-      password:user.password
-    }
-    axios.post("http://localhost:4000/register",a).then(res=>{
-      alert(res.data.message);
-      navigate("/login");
-    });}
-    else{
-      alert("please fill details");
-    }
+    if(user.name && user.email&&user.password && file){
+      uploadImageToCloudinary(file, (updateduser) => {
+        axios
+          .post("http://localhost:4000/register", updateduser)
+          .then((res) => {
+              alert(res.data.message);
+              navigate("/login");
+            
+          })
+          .catch((error) => {
+            console.error("Error creating event:", error);
+          });
+        
+    })
+  }else{
+    alert("Enter valid Details");
   }
+}
   return (<div id="loginDiv"><div id='extradiv'></div>
         <div id="registerCom">
             <h1 >REGISTER</h1>
@@ -51,7 +91,13 @@ export default function Register() {
                     </tr>
                     <tr>
                         <td >
-                            Image url :<input type="text" class="form-control" name="image" value={image}onChange={e=>onValChange(e)} />
+                            Upload Profile Picture :<input
+            type="file"
+            className="form-control"
+            accept="image/jpeg, image/jpg, image/png" // Restrict file types
+            onChange={handleImageChange}
+            required
+          />
                         </td>
                     </tr>
                     <tr >

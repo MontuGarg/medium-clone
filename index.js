@@ -5,7 +5,7 @@ const cors=require("cors");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-mongoose.connect("mongodb://127.0.0.1:27017/medium",{
+mongoose.connect("mongodb+srv://gargmontu3:Sx0AJ3jilswFAmX1@montucluster1.m1fch.mongodb.net/?retryWrites=true&w=majority&appName=MontuCluster1",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }

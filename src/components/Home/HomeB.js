@@ -45,7 +45,7 @@ export default function HomeB() {
         <h3>Discover stories, thinking, and expertise<br></br> from writers on any topic.</h3>
         <a href="login"className='btn btn-dark' >Start reading </a>
       </div>
-      <h3 style={{marginLeft:"10%",padding:"3%"}}>Latest on Medium</h3>
+      <h3 style={{marginLeft:"10%",padding:"3%"}}>Latest on Insights</h3>
       <div id="trending">
         { 
           article.slice(length-6,length).reverse().map((t,index)=>(
@@ -54,7 +54,7 @@ export default function HomeB() {
                 <h1 style={{color:"lightgray"}}>0{index+1}</h1>
                 <div id="trendingD">
                   <div id="profileInfo">
-                        <img src={t.image} width={"20px"} height={"20px"}></img>
+                        <img alt="logo" src={t.image} width={"20px"} height={"20px"}></img>
                         <p><b>{t.name}</b> in {t.tag}</p>
                   </div>
                   <p><b>{t.title.substring(0,50)+"..."}</b></p>
@@ -72,7 +72,7 @@ export default function HomeB() {
                 <div id="posts">
                     <div id="trendingD1">
                         <div id="profileInfo">
-                              <img src={art.image} id="postPorfileImg"></img>
+                              <img alt="" src={art.image} id="postPorfileImg"></img>
                               <p><b>{art.name}</b> in {art.tag}</p>
                         </div>
                         <p><b>{art.title}</b></p>
@@ -80,7 +80,7 @@ export default function HomeB() {
                         {getDATE(art.createdAt)}
                     </div>
                     <div>
-                      <img src={art.imageA} width={"300px"} height={"200px"}></img>
+                      <img alt="" src={art.imageA} width={"300px"} height={"200px"}></img>
                     </div>
                 </div>
               </div>
