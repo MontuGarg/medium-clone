@@ -304,6 +304,6 @@ app.post("/register", async (req, res) => {
       res.status(500).send({ message: "Error occurred" });
     }
   });
-app.listen(4000,()=>{
+app.listen(5000,()=>{
     console.log("server started on 4000")
 })
