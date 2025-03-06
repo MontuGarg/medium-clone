@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function HomeB() {
   const navigate=useNavigate();
   const [length,setLength]=useState(0);
@@ -43,7 +43,7 @@ export default function HomeB() {
       <div id="displayB">
         <h1>Stay curious.</h1>
         <h3>Discover stories, thinking, and expertise<br></br> from writers on any topic.</h3>
-        <a href="login"className='btn btn-dark' >Start reading </a>
+        <Link to="/login"className='btn btn-dark' >Start reading </Link>
       </div>
       <h3 style={{marginLeft:"10%",padding:"3%"}}>Latest on Insights</h3>
       <div id="trending">

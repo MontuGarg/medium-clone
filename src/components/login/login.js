@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function Login() {
     const navigate=useNavigate();
   const [user,setUser]=useState({
@@ -58,7 +58,7 @@ export default function Login() {
                     </tr>
                     <tr>
                         <td>
-                        Not registered ? <a href='register' id='link'>Register</a></td>
+                        Not registered ? <Link to='/register' id='link'>Register</Link></td>
                     </tr>
                 </table>
                 

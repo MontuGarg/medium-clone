@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export default function Register() {
   const navigate=useNavigate();
   const [user,setUser]=useState({
@@ -107,7 +107,7 @@ export default function Register() {
                     </tr>
                     <tr>
                         <td>
-                        Already have account ? <a href='login' id='link'>Login</a></td>
+                        Already have account ? <Link to='/login' id='link'>Login</Link></td>
                     </tr>
                 </table>
                 

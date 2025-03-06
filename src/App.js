@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import HomeB from './components/Home/HomeB';
 import Register from './components/register/register';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from './components/login/login';
 import OurStory from './components/OurStory';
 import Membership from './components/membership';
@@ -26,54 +26,53 @@ import Navbar from './components/layout/navbar';
 import Footer from "./components/layout/footer";
 
 function App() {
-  const [user,setUser]=useState();
- const [isload,Setload]=useState(true);
-  useEffect(()=>{
+  const [user, setUser] = useState();
+  const [isload, Setload] = useState(true);
+
+  useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("LoginUser")));
-    
+
     setTimeout(() => {
-      Setload(false)
+      Setload(false);
     }, 100);
-  },[]);
-  
-  // alert(user);
-  if(isload){
-    return(
-      <div >{user?<Navbar2/>:<Navbar/>}<div id="extradiv"></div ><div id="Loading"><div className=""></div></div></div>
-    )
-  }
-  else{
-  return (
-    <div className="App">
-      {user?<Navbar2/>:<Navbar/>}
-      <BrowserRouter>
+  }, []);
+
+  if (isload) {
+    return (
+      <div>
+        {user ? <Navbar2 /> : <Navbar />}
+        <div id="extradiv"></div>
+        <div id="Loading"><div className=""></div></div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        {user ? <Navbar2 /> : <Navbar />}
         <Routes>
-          <Route path='/' element={user?<ForYou/>:<HomeB/>}></Route>
-          <Route path='/register' element={<Register/>}></Route>
-          <Route path='/login' element={<Login/>}></Route>
-          <Route path='/ourstory' element={<OurStory/>}></Route>
-          <Route path='/membership' element={<Membership/>}></Route>
-          <Route path='/write' element={<Write/>}></Route>
-          <Route path='/write2' element={<Write2/>}></Route>
-          <Route path='/logout' element={<Logout/>}></Route>
-          <Route path='/ArticleDetail/:id' element={<ArticleDetail/>}></Route>
-          <Route path='/selfimprovement' element={<SelfImprovement/>}></Route>
-          <Route path='/technology' element={<Technology/>}></Route>
-          <Route path='/programming' element={<Programming/>}></Route>
-          <Route path='/profile/:id' element={<Profile/>}></Route>
-          <Route path='/updateArticle/:id' element={<UpdateW/>}></Route>
-          <Route path='/search' element={<Search/>}></Route>
-          <Route path='/find' element={<FindFriend/>}></Route>
-          <Route path='/following' element={<Following/>}></Route>
-          <Route path='/notification' element={<Notification/>}></Route>
-          
+          <Route path='/' element={user ? <ForYou /> : <HomeB />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/ourstory' element={<OurStory />} />
+          <Route path='/membership' element={<Membership />} />
+          <Route path='/write' element={<Write />} />
+          <Route path='/write2' element={<Write2 />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/ArticleDetail/:id' element={<ArticleDetail />} />
+          <Route path='/selfimprovement' element={<SelfImprovement />} />
+          <Route path='/technology' element={<Technology />} />
+          <Route path='/programming' element={<Programming />} />
+          <Route path='/profile/:id' element={<Profile />} />
+          <Route path='/updateArticle/:id' element={<UpdateW />} />
+          <Route path='/search' element={<Search />} />
+          <Route path='/find' element={<FindFriend />} />
+          <Route path='/following' element={<Following />} />
+          <Route path='/notification' element={<Notification />} />
         </Routes>
-      </BrowserRouter>
-      
-      
-      <Footer/>
-    </div>
-  )};
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
