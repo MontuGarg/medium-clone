@@ -28,16 +28,16 @@ export default function FindFriend() {
     }, [loadUsers, loadFollow]);
 
     const handleFollow = (e) => {
-        const a = { user1: data1.email, user2: e, status: 1 };
+        const a = { user1: data1.email, user2: e.email, status: 1 };
         axios.post(`https://mediumbackend-production.up.railway.app/follow`, a)
-            .then(() => window.location.reload())
+            .then(() => navigate(`/profile/${e._id}`))
             .catch(error => console.log(error));
     };
 
     const handleFollowing = (e) => {
-        const a = { user1: data1.email, user2: e, status: 0 };
+        const a = { user1: data1.email, user2: e.email, status: 0 };
         axios.post(`https://mediumbackend-production.up.railway.app/following`, a)
-            .then(() => window.location.reload())
+            .then(() => navigate(`/profile/${e._id}`))
             .catch(error => console.log(error));
     };
 
@@ -69,9 +69,9 @@ export default function FindFriend() {
                                 <div>
                                     <h4 onClick={() => navigate(`/profile/${art._id}`)}><b>{art.name}</b></h4>
                                     {data1._id === art._id ? null : isFollow(art.email) ? (
-                                        <button className='btn btn-outline-success' onClick={() => handleFollowing(art.email)}>Following</button>
+                                        <button className='btn btn-outline-success' onClick={() => handleFollowing(art)}>Following</button>
                                     ) : (
-                                        <button className='btn btn-outline-success' onClick={() => handleFollow(art.email)}>Follow</button>
+                                        <button className='btn btn-outline-success' onClick={() => handleFollow(art)}>Follow</button>
                                     )}
                                 </div>
                             </div>
